@@ -23,13 +23,13 @@
             background-color: #1a1a1a;
             padding: 20px 40px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
             border-bottom: 1px solid #333;
-            flex-wrap: wrap;
         }
 
         nav .logo {
@@ -37,13 +37,15 @@
             font-weight: bold;
             letter-spacing: 2px;
             color: #ffffff;
+            margin-bottom: 15px;
         }
 
         nav ul {
             display: flex;
+            flex-direction: column;
             list-style: none;
-            gap: 30px;
-            flex-wrap: nowrap;
+            gap: 15px;
+            text-align: center;
         }
 
         nav a {
@@ -54,7 +56,6 @@
             transition: color 0.3s;
             text-transform: uppercase;
             letter-spacing: 1px;
-            white-space: nowrap;
         }
 
         nav a:hover {
@@ -254,10 +255,11 @@
 
         .social-links {
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 25px;
+            gap: 15px;
             margin-top: 20px;
-            flex-wrap: wrap;
+            align-items: center;
         }
 
         .social-links a {
@@ -281,14 +283,11 @@
 
             nav .logo {
                 font-size: 20px;
-                width: 100%;
                 margin-bottom: 10px;
             }
 
             nav ul {
                 gap: 10px;
-                justify-content: center;
-                width: 100%;
             }
 
             nav a {
