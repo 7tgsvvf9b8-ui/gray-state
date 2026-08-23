@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GRAY STATE — Independent unisex streetwear. Established 2026.">
+  <meta name="theme-color" content="#0b0b0b">
+
+  <title>GRAY STATE — Streetwear</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #090909;
+      --dark: #111111;
+      --card: #161616;
+      --gray: #8c8c8c;
+      --light-gray: #bdbdbd;
+      --white: #f4f4f4;
+      --line: #292929;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(9, 9, 9, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gray);
+    }
+
+    .menu-button {
+      display: none;
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--line);
+      padding: 20px 0;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 10px 0;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 130px 0 80px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 60px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      color: var(--gray);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero-title {
+      font-size: clamp(70px, 13vw, 170px);
+      font-weight: 950;
+      line-height: 0.8;
+      letter-spacing: -0.09em;
+    }
+
+    .hero-description {
+      max-width: 430px;
+      margin-top: 40px;
+      color: var(--light-gray);
+      font-size: 16px;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      margin-top: 30px;
+      padding: 15px 24px;
+      background: var(--white);
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-side {
+      border-left: 1px solid var(--line);
+      padding-left: 30px;
+    }
+
+    .hero-number {
+      display: block;
+      font-size: 76px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .hero-side-text {
+      color: var(--gray);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================= */
+
+    section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .section-header p {
+      color: var(--gray);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       COLLECTION
+    ========================= */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .product {
+      background: var(--card);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .product-visual {
+      aspect-ratio: 1 / 1.12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          135deg,
+          #151515 0%,
+          #1d1d1d 50%,
+          #111111 100%
+        );
+    }
+
+    .product-visual::before {
+      content: "";
+      position: absolute;
+      width: 75%;
+      height: 75%;
+      border: 1px solid #333;
+      transform: rotate(12deg);
+    }
+
+    .product-visual::after {
+      content: "GRAY STATE";
+      position: relative;
+      z-index: 2;
+      color: #303030;
+      font-size: clamp(28px, 4vw, 55px);
+      font-weight: 950;
+      letter-spacing: -0.08em;
+      transform: rotate(-8deg);
+    }
+
+    .product-info {
+      padding: 21px;
+    }
+
+    .product-info h3 {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .product-info p {
+      margin-top: 5px;
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    .product-price {
+      display: block;
+      margin-top: 16px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .about-title {
+      font-size: clamp(50px, 7vw, 90px);
+      line-height: 0.9;
+      letter-spacing: -0.07em;
+    }
+
+    .about-text {
+      max-width: 530px;
+      color: var(--light-gray);
+      font-size: 16px;
+    }
+
+    .about-text p + p {
+      margin-top: 22px;
+    }
+
+    /* =========================
+       MANIFESTO
+    ========================= */
+
+    .manifesto-label {
+      margin-bottom: 25px;
+    }
+
+    .manifesto {
+      max-width: 950px;
+      font-size: clamp(30px, 5vw, 65px);
+      font-weight: 700;
+      line-height: 1.03;
+      letter-spacing: -0.05em;
+    }
+
+    .manifesto span {
+      color: #666;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-card {
+      padding: 35px;
+      border: 1px solid var(--line);
+      background: var(--dark);
+    }
+
+    .contact-card-label {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--gray);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .contact-card a {
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 800;
+    }
+
+    .contact-card a:hover {
+      color: var(--gray);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 35px 0;
+      color: #666;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .hero-side {
+        border-left: none;
+        border-top: 1px solid var(--line);
+        padding: 25px 0 0;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .section-header p {
+        margin-top: 12px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header>
+
+    <nav class="container">
+
+      <a href="#home" class="logo">
+        GRAY STATE
+      </a>
+
+      <div class="nav-links">
+        <a href="#collection">Collection</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <button
+        class="menu-button"
+        onclick="toggleMenu()"
+        aria-label="Open menu">
+        ☰
+      </button>
+
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+
+      <div class="container">
+
+        <a href="#collection" onclick="closeMenu()">
+          Collection
+        </a>
+
+        <a href="#about" onclick="closeMenu()">
+          About
+        </a>
+
+        <a href="#contact" onclick="closeMenu()">
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       MAIN
+  ========================= -->
+
+  <main id="home">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="eyebrow">
+            Established 2026 / Independent Streetwear
+          </div>
+
+          <h1 class="hero-title">
+            GRAY<br>
+            STATE
+          </h1>
+
+          <p class="hero-description">
+            Built for people who move different.
+            GRAY STATE is a unisex streetwear brand
+            created for everyday life, individuality
+            and the streets.
+          </p>
+
+          <a href="#collection" class="hero-button">
+            View Collection
+          </a>
+
+        </div>
+
+        <div class="hero-side">
+
+          <span class="hero-number">
+            01
+          </span>
+
+          <span class="hero-side-text">
+            New state.<br>
+            New standard.
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- COLLECTION -->
+
+    <section id="collection">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <h2>
+            THE COLLECTION
+          </h2>
+
+          <p>
+            Core Pieces / 2026
+          </p>
+
+        </div>
+
+
+        <div class="products">
+
+          <!-- T-SHIRT -->
+
+          <article class="product">
+
+            <div class="product-visual"></div>
+
+            <div class="product-info">
+
+              <h3>
+                GS CORE TEE
+              </h3>
+
+              <p>
+                Everyday heavyweight street tee
+              </p>
+
+              <span class="product-price">
+                COMING SOON
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <!-- HOODIE -->
+
+          <article class="product">
+
+            <div class="product-visual"></div>
+
+            <div class="product-info">
+
+              <h3>
+                GS HOODIE
+              </h3>
+
+              <p>
+                Oversized everyday street layer
+              </p>
+
+              <span class="product-price">
+                COMING SOON
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <!-- JOGGERS -->
+
+          <article class="product">
+
+            <div class="product-visual"></div>
+
+            <div class="product-info">
+
+              <h3>
+                GS JOGGERS
+              </h3>
+
+              <p>
+                Relaxed everyday street fit
+              </p>
+
+              <span class="product-price">
+                COMING SOON
+              </span>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+      <div class="container about-grid">
+
+        <div>
+
+          <h2 class="about-title">
+            WEAR<br>
+            YOUR<br>
+            STATE.
+          </h2>
+
+        </div>
+
+        <div class="about-text">
+
+          <p>
+            GRAY STATE is a unisex streetwear brand
+            established in 2026.
+          </p>
+
+          <p>
+            The brand is built around confidence,
+            movement and individuality.
+          </p>
+
+          <p>
+            Not luxury. Not trying to fit in.
+            Just streetwear with a clear attitude
+            and a different state of mind.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MANIFESTO -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="eyebrow manifesto-label">
+          THE MINDSET
+        </div>
+
+        <p class="manifesto">
+          Different people.
+          Different paths.
+          <span>
+            One state of mind —
+            move different.
+          </span>
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <h2>
+            CONNECT
+          </h2>
+
+          <p>
+            Follow the state
+          </p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+          <div class="contact-card">
+
+            <span class="contact-card-label">
+              Instagram
+            </span>
+
+            <!-- Change this username if your official account is different -->
+
+            <a
+              href="https://instagram.com/weargraystate"
+              target="_blank"
+              rel="noopener noreferrer">
+              @weargraystate
+            </a>
+
+          </div>
+
+
+          <div class="contact-card">
+
+            <span class="contact-card-label">
+              TikTok
+            </span>
+
+            <!-- Change this username if your official account is different -->
+
+            <a
+              href="https://tiktok.com/@weargraystate"
+              target="_blank"
+              rel="noopener noreferrer">
+              @weargraystate
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container footer-content">
+
+      <span>
+        © 2026 GRAY STATE
+      </span>
+
+      <span>
+        MOVE DIFFERENT.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    function toggleMenu() {
+
+      const menu = document.getElementById("mobileMenu");
+
+      if (menu.style.display === "block") {
+
+        menu.style.display = "none";
+
+      } else {
+
+        menu.style.display = "block";
+
+      }
+
+    }
+
+
+    function closeMenu() {
+
+      document.getElementById("mobileMenu").style.display = "none";
+
+    }
+
+  </script>
+
+</body>
+</html>
