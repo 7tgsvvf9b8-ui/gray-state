@@ -23,8 +23,7 @@
             background-color: #1a1a1a;
             padding: 20px 40px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
@@ -37,15 +36,21 @@
             font-weight: bold;
             letter-spacing: 2px;
             color: #ffffff;
-            margin-bottom: 15px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 28px;
+            cursor: pointer;
         }
 
         nav ul {
             display: flex;
-            flex-direction: column;
             list-style: none;
-            gap: 15px;
-            text-align: center;
+            gap: 30px;
         }
 
         nav a {
@@ -60,6 +65,36 @@
 
         nav a:hover {
             color: #ffffff;
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                margin-top: 15px;
+                padding-top: 15px;
+                border-top: 1px solid #333;
+                align-items: flex-start;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
         }
 
         /* Hero Section */
@@ -255,11 +290,10 @@
 
         .social-links {
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            gap: 15px;
+            gap: 25px;
             margin-top: 20px;
-            align-items: center;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -274,50 +308,14 @@
         .social-links a:hover {
             color: #ffffff;
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
-            }
-
-            nav .logo {
-                font-size: 20px;
-                margin-bottom: 10px;
-            }
-
-            nav ul {
-                gap: 10px;
-            }
-
-            nav a {
-                font-size: 12px;
-            }
-
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .featured-drops h2,
-            .brand-story h2 {
-                font-size: 36px;
-            }
-
-            .products-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
         <div class="logo">GRAY STATE</div>
-        <ul>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <ul id="navMenu">
             <li><a href="#home">Home</a></li>
             <li><a href="#shop">Shop</a></li>
             <li><a href="#drops">New Drops</a></li>
@@ -382,5 +380,22 @@
             <a href="mailto:contact@graystate.com">Email</a>
         </div>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
