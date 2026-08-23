@@ -39,13 +39,12 @@
         }
 
         .menu-toggle {
-            display: none;
             background: none;
             border: none;
             color: #ffffff;
             font-size: 28px;
             cursor: pointer;
-            order: 2;
+            display: none;
         }
 
         nav ul {
@@ -71,17 +70,15 @@
         /* Mobile Menu */
         @media (max-width: 768px) {
             nav {
-                flex-wrap: wrap;
-                justify-content: space-between;
+                position: relative;
             }
 
             .menu-toggle {
                 display: block;
-                order: 3;
-            }
-
-            nav .logo {
-                order: 1;
+                position: absolute;
+                right: 40px;
+                top: 50%;
+                transform: translateY(-50%);
             }
 
             nav ul {
@@ -89,11 +86,12 @@
                 flex-direction: column;
                 gap: 15px;
                 width: 100%;
-                order: 4;
-                margin-top: 15px;
-                padding-top: 15px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #1a1a1a;
+                padding: 20px 40px;
                 border-top: 1px solid #333;
-                align-items: flex-start;
             }
 
             nav ul.active {
